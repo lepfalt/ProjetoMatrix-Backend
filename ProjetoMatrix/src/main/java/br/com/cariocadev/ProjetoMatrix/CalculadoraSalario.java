@@ -1,7 +1,7 @@
 package br.com.cariocadev.ProjetoMatrix;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
+//import java.math.RoundingMode;
 
 public class CalculadoraSalario {
 
@@ -9,7 +9,7 @@ public class CalculadoraSalario {
 		
 		if(validar(salarioBruto) && validar(percentualImpostoINSS))
 		{
-			percentualImpostoINSS = percentualImpostoINSS.divide(new BigDecimal("100.0"), 2, RoundingMode.HALF_EVEN);
+			percentualImpostoINSS = percentualImpostoINSS.divide(new BigDecimal("100.0"), 2, BigDecimal.ROUND_HALF_UP);
 			
 			if(salarioBruto != null && percentualImpostoINSS != null)
 			{
@@ -21,25 +21,23 @@ public class CalculadoraSalario {
 	}
 
 	public BigDecimal getValorINSS(BigDecimal salarioBruto) {
-			
 		if(validar(salarioBruto))
 		{
-			if(salarioBruto.compareTo(new BigDecimal("1693.72"))<= 0)
+			if(salarioBruto.compareTo(new BigDecimal("1693.72")) <= 0)
 			{
-				return salarioBruto.multiply(new BigDecimal("8.0")).divide(new BigDecimal("100.0"), 2, RoundingMode.HALF_UP);
+				return salarioBruto.multiply(new BigDecimal("0.08")).setScale(2, BigDecimal.ROUND_HALF_UP);
 			}
-			else if(salarioBruto.compareTo(new BigDecimal("1693.73")) >= 0
-					&& salarioBruto.compareTo(new BigDecimal("2822.90")) <= 0)
+			else if(salarioBruto.compareTo(new BigDecimal("1693.72")) > 0 && salarioBruto.compareTo(new BigDecimal("2822.90")) <= 0)
 			{
-				return salarioBruto.multiply(new BigDecimal("9.0")).divide(new BigDecimal("100.0"), 2, RoundingMode.HALF_UP);
+				return salarioBruto.multiply(new BigDecimal("0.09")).setScale(2, BigDecimal.ROUND_HALF_UP);
 			}
-			else if (salarioBruto.compareTo(new BigDecimal("2822.91")) >= 0)
+			else if(salarioBruto.compareTo(new BigDecimal("2822.90")) > 0)
 			{
-				return salarioBruto.multiply(new BigDecimal("11.0")).divide(new BigDecimal("100.0"), 2, RoundingMode.HALF_UP);
+				return salarioBruto.multiply(new BigDecimal("0.11")).setScale(2, BigDecimal.ROUND_HALF_UP);
 			}
 		}
 		
-		return null;
+			throw new IllegalArgumentException();
 	}
 
 	public BigDecimal getValorPlanoDeSaude(Integer idade) {
@@ -71,12 +69,10 @@ public class CalculadoraSalario {
 	{
 		if(valor == null)
 		{
-			throw new IllegalArgumentException();
+			return false;
 		}
-		else
-		{
-			return true;
-		}
+		
+		return true;
 	}
 	
 	public Boolean validar(Integer valor)
