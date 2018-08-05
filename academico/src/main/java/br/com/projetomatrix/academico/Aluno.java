@@ -1,34 +1,27 @@
 package br.com.projetomatrix.academico;
 
-public class Aluno extends Usuario {
+import java.util.List;
+
+import br.com.projetomatrix.academico.curso.Avaliacao;
+
+public class Aluno extends Pessoa{
 
 	private Curso curso;
-	private Avaliacao[] avaliacoes;
-	
-	Aluno(String nome, String endereco, String telefone, Curso curso)
-	{
-		setNome(nome);
-		setEndereco(endereco);
-		setTelefone(telefone);
-		setCurso(curso);
-		setStatusAtual(Status.ATIVO);
-	}
+	private List<Avaliacao> avaliacoes;
 
-	// CURSO
-	public Curso getCurso() {
-		return curso;
-	}
-	public void setCurso(Curso curso) {
-		this.curso = curso;
-	}
-	
-	// AVALIACOES
-	public Avaliacao[] getAvaliacoes() {
+	public List<Avaliacao> getAvaliacoes() {
 		return avaliacoes;
 	}
-	public void setAvaliacoes(Avaliacao[] avaliacoes) {
+
+	public void setAvaliacoes(List<Avaliacao> avaliacoes) {
 		this.avaliacoes = avaliacoes;
 	}
 
-	
+	public Curso getCurso() {
+		return curso;
+	}
+
+	public void setCurso(Curso curso) {
+		this.curso = curso;
+	}
 }

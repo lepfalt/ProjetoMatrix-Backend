@@ -1,24 +1,19 @@
 package br.com.projetomatrix.academico;
 
+import java.util.List;
+
+import br.com.projetomatrix.academico.curso.Disciplina;
+
 public class Curso {
 
-	private Disciplina[] disciplinasCurso;
 	private String descricao;
-	private long codigo;
-	private long cargaHoraria;
+	private String codigo;
+	private Integer cargaHoraria;
 	private String ementa;
 	private String bibliografia;
 	private Coordenador coordenador;
+	private List<Disciplina> disciplinas;
 	
-	// DISCIPLINAS
-	public Disciplina[] getDisciplinasCurso() {
-		return disciplinasCurso;
-	}
-	public void setDisciplinasCurso(Disciplina[] disciplinasCurso) {
-		this.disciplinasCurso = disciplinasCurso;
-	}
-	
-	// DESCRICAO
 	public String getDescricao() {
 		return descricao;
 	}
@@ -26,23 +21,20 @@ public class Curso {
 		this.descricao = descricao;
 	}
 	
-	// CODIGO
-	public long getCodigo() {
+	public String getCodigo() {
 		return codigo;
 	}
-	public void setCodigo(long codigo) {
+	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
 	
-	// CARGA HORARIA
-	public long getCargaHoraria() {
+	public Integer getCargaHoraria() {
 		return cargaHoraria;
 	}
-	public void setCargaHoraria(long cargaHoraria) {
+	public void setCargaHoraria(Integer cargaHoraria) {
 		this.cargaHoraria = cargaHoraria;
 	}
 	
-	// EMENTA
 	public String getEmenta() {
 		return ementa;
 	}
@@ -50,7 +42,6 @@ public class Curso {
 		this.ementa = ementa;
 	}
 	
-	// BIBLIOGRAFIA
 	public String getBibliografia() {
 		return bibliografia;
 	}
@@ -58,11 +49,17 @@ public class Curso {
 		this.bibliografia = bibliografia;
 	}
 	
-	// COORDENADOR
 	public Coordenador getCoordenador() {
 		return coordenador;
 	}
 	public void setCoordenador(Coordenador coordenador) {
 		this.coordenador = coordenador;
+	}
+	
+	public List<Disciplina> getDisciplinas() {
+		return disciplinas;
+	}
+	public void setDisciplinas(List<Disciplina> disciplinas) {
+		this.disciplinas = disciplinas;
 	}
 }
