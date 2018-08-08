@@ -2,7 +2,10 @@ package br.com.projetomatrix.academico;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import br.com.projetomatrix.academico.curso.*;
 
 public class ProfessorService {
 
@@ -16,6 +19,8 @@ public class ProfessorService {
 		{
 			gerarMatricula(professor);
 			
+			professor.setStatus(Status.ATIVO);
+			
 			hashProfessores.put(professor.getMatricula(), professor);
 		}
 		
@@ -26,6 +31,8 @@ public class ProfessorService {
 	{
 		if(matricula == null || matricula.length() == 0)
 			throw new IllegalArgumentException();
+		
+		recuperarProfessor(matricula).setStatus(Status.INATIVO);
 		
 		hashProfessores.remove(matricula);
 	}
@@ -59,10 +66,28 @@ public class ProfessorService {
 		Integer mes = LocalDateTime.now().getMonthValue();
 		String semestre = mes <= 6 ? "1" : "2";
 		
-		sequencial.sum(sequencial, 1);
-		
-		String matricula = ano + semestre + "P" + sequencial.intValue();
+		String matricula = "P" + ano + semestre + sequencial++;
 		
 		professor.setMatricula(matricula);
+	}
+	
+	public String buscarTurmasDoProfessor(String matricula)
+	{
+		String turmasProfessor = new String();
+		
+		Professor professor = recuperarProfessor(matricula);
+		List<Turma> turmas = professor.getTurmas();
+		
+		for(Turma turmaDaVez : turmas)
+		{
+			turmasProfessor += turmaDaVez.getDisciplina().getDescricao() + ", ";
+		}
+		
+		return turmasProfessor;
+	}
+	
+	public void adicionarTurmaParaProfessor(Professor professor, Turma turma)
+	{
+		professor.getTurmas().add(turma);
 	}
 }

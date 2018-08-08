@@ -14,12 +14,12 @@ public class TurmaService {
 	
 	public Turma cadastrarTurma(Turma turma)
 	{
-		if(turma != null && hashTurmas.containsKey(turma.getCodigo()) == false)	
-		{
-			gerarCodigoTurma(turma);
+		if(turma == null || hashTurmas.containsKey(turma.getCodigo()))	
+				return turma;
+		
+		gerarCodigoTurma(turma);
 			
-			hashTurmas.put(turma.getCodigo(), turma);
-		}
+		hashTurmas.put(turma.getCodigo(), turma);
 		
 		return turma;
 	}
@@ -57,10 +57,14 @@ public class TurmaService {
 	{
 		String dia = Integer.toString(LocalDateTime.now().getDayOfWeek().getValue());
 		
-		sequencial.sum(sequencial, 1);
-		
-		String codigo = "T" + dia + sequencial.intValue();
+		String codigo = "T" + dia + sequencial++;
 		
 		turma.setCodigo(codigo);
+	}
+	
+	public void adicionarAlunoNaTurma(Aluno aluno, Turma turma)
+	{
+		turma.getAlunos().add(aluno);
+		aluno.getTurmas().add(turma);
 	}
 }

@@ -1,9 +1,9 @@
 package br.com.projetomatrix.academico.curso;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import br.com.projetomatrix.academico.Aluno;
-import br.com.projetomatrix.academico.Professor;
+import br.com.projetomatrix.academico.*;
 
 public class Turma {
 
@@ -15,7 +15,28 @@ public class Turma {
 	private Integer semestre;
 	private String dataAbertura;
 	private String dataEncerramento;
+	private Horario horarios;
 	
+	public Turma()
+	{
+		alunos = new ArrayList<>();
+	}
+	
+	public Turma(Disciplina disciplina, Professor professor, Integer anoLetivo,
+			Integer semestre, String dataAbertura, String dataEncerramento, Horario horarios) {
+		
+		setCodigo(" ");
+		setDisciplina(disciplina);
+		setAnoLetivo(anoLetivo);
+		setSemestre(semestre);
+		setDataAbertura(dataAbertura);
+		setDataEncerramento(dataEncerramento);
+		setHorarios(horarios);
+		setProfessor(professor);
+		professor.getTurmas().add(this);
+		alunos = new ArrayList<>();
+	}
+
 	public Disciplina getDisciplina() {
 		return disciplina;
 	}
@@ -70,5 +91,10 @@ public class Turma {
 	public void setHorarios(Horario horarios) {
 		this.horarios = horarios;
 	}
-	private Horario horarios;
+	
+	/*public void adicionarAluno(Aluno aluno)
+	{
+		aluno.adicionarTurma(this);
+		alunos.add(aluno);
+	}*/
 }

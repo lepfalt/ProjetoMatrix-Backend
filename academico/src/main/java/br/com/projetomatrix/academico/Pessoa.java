@@ -9,6 +9,20 @@ public abstract class Pessoa {
 	private String matricula;
 	private Status status;
 	
+	public Pessoa()
+	{
+		
+	}
+	
+	public Pessoa(String nome, String endereco, String telefone) {
+		
+		setMatricula("");
+		setNome(nome);
+		setEndereco(endereco);
+		setTelefone(telefone);
+		setStatus(Status.ATIVO);
+	}
+
 	public String getNome() {
 		return nome;
 	}

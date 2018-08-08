@@ -1,5 +1,6 @@
 package br.com.projetomatrix.academico;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.projetomatrix.academico.curso.Disciplina;
@@ -14,6 +15,23 @@ public class Curso {
 	private Coordenador coordenador;
 	private List<Disciplina> disciplinas;
 	
+	public Curso()
+	{
+		disciplinas = new ArrayList<>();
+	}
+	
+	public Curso(String descricao, Integer cargaHoraria, String ementa, String bibliografia,
+			Coordenador coordenador) {
+		
+		setCodigo("");
+		setDescricao(descricao);
+		setCargaHoraria(cargaHoraria);
+		setEmenta(ementa);
+		setBibliografia(bibliografia);
+		setCoordenador(coordenador);
+		disciplinas = new ArrayList<>();
+	}
+
 	public String getDescricao() {
 		return descricao;
 	}

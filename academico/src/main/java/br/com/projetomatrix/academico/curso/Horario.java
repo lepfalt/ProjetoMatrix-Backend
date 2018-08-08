@@ -7,6 +7,19 @@ public class Horario {
 	private String horaInicio;
 	private String horaFim;
 	
+	public Horario()
+	{
+		
+	}
+	
+	public Horario(String diaSemana, String horaInicio, String horaFim) {
+		
+		setCodigo(" ");
+		setDiaSemana(diaSemana);
+		setHoraInicio(horaInicio);
+		setHoraFim(horaFim);
+	}
+
 	public String getCodigo() {
 		return codigo;
 	}

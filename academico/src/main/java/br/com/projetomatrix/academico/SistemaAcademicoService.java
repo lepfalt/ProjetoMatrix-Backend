@@ -1,9 +1,8 @@
 package br.com.projetomatrix.academico;
 
-import br.com.projetomatrix.academico.curso.Avaliacao;
-import br.com.projetomatrix.academico.curso.Disciplina;
-import br.com.projetomatrix.academico.curso.Horario;
-import br.com.projetomatrix.academico.curso.Turma;
+import java.math.BigDecimal;
+
+import br.com.projetomatrix.academico.curso.*;
 
 public class SistemaAcademicoService {
 	
@@ -81,6 +80,15 @@ public class SistemaAcademicoService {
 	{
 		disciplinaService.gerarCodigoDisciplina(disciplina);
 	}
+	public void adicionarPreRequisitoNaDisciplina(Disciplina disciplina, Disciplina preRequisito)
+	{
+		disciplinaService.adicionarPreRequisitoNaDisciplina(disciplina, preRequisito);
+	}
+	
+	public void adicionarProfessorNaDisciplina(Disciplina disciplina, Professor professor)
+	{
+		disciplinaService.adicionarProfessorNaDisciplina(disciplina, professor);
+	}
 	
 	// SERVICO DO COORDENADOR
 	public Coordenador cadastrarCoordenador(Coordenador coordenador)
@@ -125,6 +133,10 @@ public class SistemaAcademicoService {
 	{
 		cursoService.gerarCodigoCurso(curso);
 	}
+	public void adicionarDisciplinaNoCurso(Curso curso, Disciplina disciplina)
+	{
+		cursoService.adicionarDisciplinaNoCurso(curso, disciplina);
+	}
 	
 	// SERVICO DO PROFESSOR
 	public Professor cadastrarProfessor(Professor professor)
@@ -147,6 +159,15 @@ public class SistemaAcademicoService {
 	{
 		professorService.gerarMatricula(professor);
 	}
+	public String buscarTurmasDoProfessor(String matricula)
+	{
+		return professorService.buscarTurmasDoProfessor(matricula);
+	}
+	public void adicionarTurmaParaProfessor(Professor professor, Turma turma)
+	{
+		professorService.adicionarTurmaParaProfessor(professor, turma);
+	}
+	
 	
 	// SERVICO DA TURMA
 	public Turma cadastrarTurma(Turma turma)
@@ -169,6 +190,10 @@ public class SistemaAcademicoService {
 	{
 		turmaService.gerarCodigoTurma(turma);
 	}
+	public void adicionarAlunoNaTurma(Aluno aluno, Turma turma)
+	{
+		turmaService.adicionarAlunoNaTurma(aluno, turma);
+	}
 	
 	// SERVICO DO ALUNO
 	public Aluno cadastrarAluno(Aluno aluno)
@@ -190,5 +215,37 @@ public class SistemaAcademicoService {
 	public void gerarMatriculaAluno(Aluno aluno)
 	{	
 		alunoService.gerarMatricula(aluno);
+	}
+	public BigDecimal calcularMediaDoAlunoPorTurma(String matricula, Turma turma) 
+	{
+		return alunoService.calcularMediaDoAlunoPorTurma(matricula, turma);
+	}
+	public StatusAcademico buscarStatusAcademicoDoAlunoPorTurma(String matricula, Turma turma) 
+	{
+		return alunoService.buscarStatusAcademicoDoAlunoPorTurma(matricula, turma);
+	}
+	public String buscarTurmasDoAluno(String matricula)
+	{
+		return alunoService.buscarTurmasDoAluno(matricula);
+	}
+	public String buscarBoletimDoAlunoPorDisciplina(String matricula, Disciplina disciplina)
+	{
+		return alunoService.buscarBoletimDoAlunoPorDisciplina(matricula, disciplina);
+	}
+	public Boletim retornarBoletimPorTurma(String matricula, Turma turma)
+	{
+		return alunoService.retornarBoletimPorTurma(matricula, turma);
+	}
+	public Turma retornarTurmaDaDisciplina(String matricula, Disciplina disciplina)
+	{
+		return alunoService.retornarTurmaDaDisciplina(matricula, disciplina);
+	}
+	public String buscarHistorico(String matricula)
+	{	
+		return alunoService.buscarHistorico(matricula);
+	}
+	public Historico retornarHistoricoDoAluno(String matricula)
+	{
+		return alunoService.retornarHistoricoDoAluno(matricula);
 	}
 }

@@ -1,6 +1,7 @@
 package br.com.projetomatrix.academico;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import br.com.projetomatrix.academico.curso.Disciplina;
@@ -54,20 +55,33 @@ public class DisciplinaService {
 	
 	public void gerarCodigoDisciplina(Disciplina disciplina)
 	{
-		String iniciais = new String();
-		
-		int i = 1;
-		while(disciplina.getDescricao().length() >= i)
+		if(disciplina != null)
 		{
-			if(disciplina.getDescricao().charAt(i-1) == ' ')
-				iniciais += disciplina.getDescricao().charAt(i);
-			i++;
+			//String iniciais = new String((disciplina.getDescricao()).substring(0, 2));
+			
+			/*for(int i=1;i<= disciplina.getDescricao().length(); i++)
+			{
+				if(disciplina.getDescricao().substring(i-1, 1).equals(" "))
+					iniciais += disciplina.getDescricao().substring(i, 1);
+			} */
+			
+			sequencial.sum(sequencial, 1);
+			
+			String codigo = new String();
+					
+			codigo = "D" + Integer.toString(sequencial.intValue()); //melhorar
+			
+			disciplina.setCodigo(codigo);
 		}
-		
-		sequencial.sum(sequencial, 1);
-		
-		String codigo = iniciais.toUpperCase() + sequencial.intValue();
-		
-		disciplina.setCodigo(codigo);
+	}
+	
+	public void adicionarPreRequisitoNaDisciplina(Disciplina disciplina, Disciplina preRequisito)
+	{
+		disciplina.getPreRequisitos().add(preRequisito);
+	}
+	
+	public void adicionarProfessorNaDisciplina(Disciplina disciplina, Professor professor)
+	{
+		disciplina.getProfessores().add(professor);
 	}
 }

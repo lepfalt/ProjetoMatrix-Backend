@@ -16,6 +16,8 @@ public class CoordenadorService {
 		{
 			gerarMatricula(coordenador);
 			
+			coordenador.setStatus(Status.ATIVO);
+			
 			hashCoordenadores.put(coordenador.getMatricula(), coordenador);
 		}
 		
@@ -26,6 +28,8 @@ public class CoordenadorService {
 	{
 		if(matricula == null || matricula.length() == 0)
 			throw new IllegalArgumentException();
+		
+		recuperarCoordenador(matricula).setStatus(Status.INATIVO);
 		
 		hashCoordenadores.remove(matricula);
 	}
@@ -59,9 +63,7 @@ public class CoordenadorService {
 		Integer mes = LocalDateTime.now().getMonthValue();
 		String semestre = mes <= 6 ? "1" : "2";
 		
-		sequencial.sum(sequencial, 1);
-		
-		String matricula = ano + semestre + "C" + sequencial.intValue();
+		String matricula = ano + semestre + "C" + sequencial++;
 		
 		coordenador.setMatricula(matricula);
 	}

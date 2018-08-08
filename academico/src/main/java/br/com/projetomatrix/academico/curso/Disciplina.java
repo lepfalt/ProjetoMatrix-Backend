@@ -1,9 +1,9 @@
 package br.com.projetomatrix.academico.curso;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import br.com.projetomatrix.academico.Curso;
-import br.com.projetomatrix.academico.Professor;
+import br.com.projetomatrix.academico.*;
 
 public class Disciplina {
 
@@ -12,6 +12,21 @@ public class Disciplina {
 	private Curso curso;
 	private List<Professor> professores;
 	private List<Disciplina> preRequisitos;
+	
+	public Disciplina()
+	{
+		professores = new ArrayList<>();
+		preRequisitos = new ArrayList<>();
+	}
+	
+	public Disciplina(String descricao, Curso curso)
+	{
+		setCodigo("");
+		setDescricao(descricao);
+		setCurso(curso);
+		professores = new ArrayList<>();
+		preRequisitos = new ArrayList<>();
+	}
 	
 	public String getDescricao() {
 		return descricao;

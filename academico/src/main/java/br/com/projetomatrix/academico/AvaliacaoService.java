@@ -4,8 +4,7 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
-import br.com.projetomatrix.academico.curso.Avaliacao;
-import br.com.projetomatrix.academico.curso.Modo;
+import br.com.projetomatrix.academico.curso.*;
 
 public class AvaliacaoService {
 
@@ -15,12 +14,12 @@ public class AvaliacaoService {
 	
 	public Avaliacao cadastrarAvaliacao(Avaliacao avaliacao)
 	{
-		if(avaliacao != null && hashAvaliacoes.containsKey(avaliacao.getCodigo()) == false)
-		{
+		if(avaliacao == null || hashAvaliacoes.containsKey(avaliacao.getCodigo()))
+			return avaliacao;
+		
 			gerarCodigoAvaliacao(avaliacao);
 			
 			hashAvaliacoes.put(avaliacao.getCodigo(), avaliacao);
-		}
 			
 		return avaliacao;
 	}

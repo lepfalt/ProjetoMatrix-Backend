@@ -1,9 +1,9 @@
 package br.com.projetomatrix.academico.curso;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
-import br.com.projetomatrix.academico.Aluno;
-import br.com.projetomatrix.academico.Professor;
+import br.com.projetomatrix.academico.*;
 
 public class Avaliacao {
 
@@ -14,8 +14,28 @@ public class Avaliacao {
 	private String descricao;
 	private Modo modo;
 	private Professor responsavel;
-	private Double nota; //Double
+	private BigDecimal nota;
 	
+	public Avaliacao()
+	{	
+		
+	}
+	
+	public Avaliacao(Turma turma, Aluno aluno, Date data, String descricao, Modo modo,
+			Professor responsavel, BigDecimal nota) {
+		
+		setTurma(turma);
+		setAluno(aluno);
+		setCodigo("");
+		setData(data);
+		setDescricao(descricao);
+		setModo(modo);
+		setResponsavel(responsavel);
+		setNota(nota);
+		
+		aluno.getAvaliacoes().add(this);
+	}
+
 	public Turma getTurma() {
 		return turma;
 	}
@@ -58,10 +78,10 @@ public class Avaliacao {
 	public void setResponsavel(Professor responsavel) {
 		this.responsavel = responsavel;
 	}
-	public Double getNota() {
+	public BigDecimal getNota() {
 		return nota;
 	}
-	public void setNota(Double nota) {
+	public void setNota(BigDecimal nota) {
 		this.nota = nota;
 	}
 }

@@ -3,6 +3,8 @@ package br.com.projetomatrix.academico;
 import java.util.HashMap;
 import java.util.Map;
 
+import br.com.projetomatrix.academico.curso.Disciplina;
+
 public class CursoService {
 
 	private Long sequencial = new Long(0);
@@ -54,7 +56,7 @@ public class CursoService {
 		String iniciais = new String();
 		
 		int i = 1;
-		while(curso.getDescricao().length() >= i)
+		while(i < curso.getDescricao().length())
 		{
 			if(curso.getDescricao().charAt(i-1) == ' ')
 				iniciais += curso.getDescricao().charAt(i);
@@ -66,5 +68,10 @@ public class CursoService {
 		String codigo = iniciais.toUpperCase() + sequencial.intValue();
 		
 		curso.setCodigo(codigo);
+	}
+	
+	public void adicionarDisciplinaNoCurso(Curso curso, Disciplina disciplina)
+	{
+		curso.getDisciplinas().add(disciplina);
 	}
 }
