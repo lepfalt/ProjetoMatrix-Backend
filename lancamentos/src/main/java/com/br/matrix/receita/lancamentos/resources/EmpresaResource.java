@@ -49,8 +49,14 @@ public class EmpresaResource {
 	}
 	
 	@GetMapping("/empresas/buscar")
-	public ResponseEntity<Empresa> getEmpresaPorNome(@RequestParam("nome") String nome, @RequestParam("cnpj") String cnpj){
+	public ResponseEntity<Empresa> getEmpresaPorNomeECnpj(@RequestParam("nome") String nome, @RequestParam("cnpj") String cnpj){
 		Empresa empresa = empresaService.buscarPorNomeECnpj(nome, cnpj);
+		return new ResponseEntity<>(empresa, HttpStatus.OK);	
+	}
+	
+	@GetMapping("/empresas/buscarPorId")
+	public ResponseEntity<Empresa> getEmpresaPorId(@RequestParam("id") Long id){
+		Empresa empresa = empresaService.buscarPorId(id);
 		return new ResponseEntity<>(empresa, HttpStatus.OK);	
 	}
 }

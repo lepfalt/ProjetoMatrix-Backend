@@ -10,5 +10,6 @@ import com.br.matrix.receita.lancamentos.models.Empresa;
 @Repository
 public interface EmpresaRepository extends JpaRepository<Empresa, Long>{
 
+	Optional <Empresa> findById(Long id);
 	Optional <Empresa> findByNomeAndCnpj(String nome, String cnpj);
 }

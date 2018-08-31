@@ -33,4 +33,8 @@ public class CategoriaService {
 	public Categoria buscarPorDescricao(String descricao) {
 		return categoriaRepository.findByDescricao(descricao).get();
 	}
+	
+	public Categoria buscarPorId(Long id) {
+		return categoriaRepository.findById(id).get();
+	}
 }

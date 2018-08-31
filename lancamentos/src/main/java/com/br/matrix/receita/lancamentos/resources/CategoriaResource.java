@@ -53,4 +53,10 @@ public class CategoriaResource {
 		Categoria categoria = categoriaService.buscarPorDescricao(descricao);
 		return new ResponseEntity<>(categoria, HttpStatus.OK);	
 	}
+	
+	@GetMapping("/categorias/buscarPorId")
+	public ResponseEntity<Categoria> getCategoriaPorId(@RequestParam("id") Long id){
+		Categoria categoria = categoriaService.buscarPorId(id);
+		return new ResponseEntity<>(categoria, HttpStatus.OK);	
+	}
 }

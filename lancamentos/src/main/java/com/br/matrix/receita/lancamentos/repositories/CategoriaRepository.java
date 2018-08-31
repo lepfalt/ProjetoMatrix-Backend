@@ -10,5 +10,6 @@ import com.br.matrix.receita.lancamentos.models.Categoria;
 @Repository
 public interface CategoriaRepository extends JpaRepository<Categoria, Long> {
 
+	Optional <Categoria> findById(Long id);
 	Optional <Categoria> findByDescricao(String descricao);
 }

@@ -34,4 +34,8 @@ public class LancamentoService {
 	public Lancamento buscarPorVencimento(LocalDate vencimento) {
 		return lancamentoRepository.findByVencimento(vencimento).get();
 	}
+	
+	public Lancamento buscarPorId(Long id) {
+		return lancamentoRepository.findById(id).get();
+	}
 }

@@ -11,5 +11,6 @@ import com.br.matrix.receita.lancamentos.models.Lancamento;
 @Repository
 public interface LancamentoRepository extends JpaRepository<Lancamento, Long> {
 
+	Optional <Lancamento> findById(Long id);
 	Optional <Lancamento> findByVencimento(LocalDate vencimento);
 }

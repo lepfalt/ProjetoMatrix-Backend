@@ -33,4 +33,9 @@ public class EmpresaService {
 	public Empresa buscarPorNomeECnpj(String nome, String cnpj) {
 		return empresaRepository.findByNomeAndCnpj(nome, cnpj).get();
 	}
+
+	public Empresa buscarPorId(Long id) {
+		return empresaRepository.findById(id).get();
+	}
+	
 }
