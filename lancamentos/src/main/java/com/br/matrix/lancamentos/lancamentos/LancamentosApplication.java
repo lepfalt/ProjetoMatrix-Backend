@@ -1,4 +1,4 @@
-package com.br.matrix.receita.lancamentos;
+package com.br.matrix.lancamentos.lancamentos;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

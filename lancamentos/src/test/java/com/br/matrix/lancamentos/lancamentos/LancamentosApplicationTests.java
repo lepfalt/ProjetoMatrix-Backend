@@ -1,4 +1,4 @@
-package com.br.matrix.receita.lancamentos;
+package com.br.matrix.lancamentos.lancamentos;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
